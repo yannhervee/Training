@@ -1,0 +1,33 @@
+table {
+    width: 40%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: center;
+    
+    
+}
+th, td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 8px;
+    width: 50px;
+}
+th {
+    background-color: #f4f4f4;
+    
+}
+.sum-row {
+    font-weight: bold;
+    background-color: #067e6e;
+}
+h1 {
+    margin-bottom: 50px;
+   
+    color: rgb(16, 159, 140)
+}
+
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
