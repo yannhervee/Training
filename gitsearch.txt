@@ -1,0 +1,19 @@
+git pull: Fetches updates from the remote repository and merges them into your current branch.
+git checkout [branchName]: Switches to the specified branch.
+git branch [branchName]: Creates a new branch with the specified name but does not switch to it.
+git checkout -b [branchName]: Creates a new branch and switches to it immediately.
+git branch: Lists all branches in the repository, with the current branch highlighted.
+git add .: Stages all changes (new, modified, deleted files) in the current directory for commit.
+git commit: Saves the staged changes as a snapshot in the repository's history.
+git log: Displays the commit history of the repository.
+git push: Uploads local commits to the remote repository.
+git merge: Combines changes from one branch into another (typically into the current branch).
+git reset vs Git revert:
+git reset: Undoes changes by moving the branch pointer; can alter history.
+git revert: Creates a new commit to undo changes without altering history.
+git merge vs Git rebase:
+git merge: Combines branches by creating a merge commit, keeping branch history.
+git rebase: Moves commits to a new base, creating a linear history.
+git pull vs Git fetch:
+git pull: Fetches and merges remote changes into the current branch.
+git fetch: Only downloads updates from the remote repository without merging.
