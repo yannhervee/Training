@@ -1,0 +1,16 @@
+<div class="container">
+    
+    <!-- List Section -->
+      <app-shorten-item
+    [messages]="messages"
+    (selectMessage)="selectMessage($event)"
+  ></app-shorten-item>
+  
+    <!-- Detail Section -->
+    <div class="detail" *ngIf="selectedMessage">
+      <h1 [style.color]="selectedMessage.color">{{ selectedMessage.name }}</h1>
+      <textarea [(ngModel)]="selectedMessage.message"></textarea>
+      <button class="save-btn" (click)="handleSave()" >Save</button>
+    </div>
+
+  

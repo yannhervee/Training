@@ -1,0 +1,9 @@
+
+    <div >
+
+        {{card.title}}
+    </div>
+    <div>
+        {{card.body}}
+    </div>
+    <button [ngStyle]="{'background-color': card.btnColor, 'border-color': card.btnColor}" (click)="handleClick()">Set {{card.btnColor}}</button>

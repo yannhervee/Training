@@ -1,0 +1,17 @@
+ <!-- List Section -->
+ <div class="list">
+    <h1>List</h1>
+  <div
+    class="list-item"
+    *ngFor="let message of messages"
+    (click)="onSelect(message)"
+    
+    [ngStyle]="{'border-left': '5px solid ' + message.color}"
+  >
+   
+  <div class="content" >
+      <h3>{{ message.name }}</h3>
+      <p>{{ message.message | slice: 0:100 }}...</p>
+    </div>
+  </div>
+</div>

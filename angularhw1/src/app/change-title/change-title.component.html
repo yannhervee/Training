@@ -1,0 +1,10 @@
+
+<h1 [ngStyle]="{'color': titleColor }">change-title works!</h1>
+<div class="container" >
+    <app-change-title-item *ngFor="let card of cards" class="card" 
+    [card]="card" (btnColor)="handleClick($event)"
+    [ngStyle]="{border: titleColor === card.btnColor ? '2px solid ' + card.btnColor : ''}">
+
+    </app-change-title-item>
+
+</div>
