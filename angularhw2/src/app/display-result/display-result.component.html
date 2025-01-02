@@ -1,0 +1,21 @@
+<h2 class="title">{{ resultCount===0 ? "Search Albums by ArtistName: " : resultCount + " results found" }} </h2>
+<hr class="divider" />
+
+<div class="results-container" *ngIf="musics && musics.length > 0">
+   
+    <div class="music-grid">
+      <div class="music-card" *ngFor="let music of musics">
+        <img [src]="music.artworkUrl100" [alt]="music.collectionName" />
+        <p class="artist">{{ music.collectionName }}</p>
+        <p *ngIf="music.artistName">{{ music.artistName }}</p> 
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="noSearch === false && resultCount=== 0" class="no-results">
+    <p class="artist">No albums found. Try searching for another artist!</p>
+  </div>
+  
+  
+  
+  

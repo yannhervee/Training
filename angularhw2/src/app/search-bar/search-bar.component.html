@@ -1,0 +1,20 @@
+
+<div class="header">
+    
+    <input
+    class="search"
+    type="text"
+    
+    placeholder="Search ..."
+    [(ngModel)]="searchInput"
+    (keyup.enter)="onSearch()"
+    
+   
+  />
+
+  <button class="search-button" (click) = "onSearch()">
+    <fa-icon [icon]="faSearch" class="icon"></fa-icon> 
+  </button>
+
+
+</div>

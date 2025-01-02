@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    gap: 10px;
+    padding: 20px;
+    background-color: #0f967b;
+    color: white;
+    margin-top: 0;
+    
+  }
+  .search{
+    width: 600px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    
+  }
+
+  .icon{
+    font-size: 24px;
+    font-weight: bold;
+    color:  #0f967b;
+  }
+ 
+    
