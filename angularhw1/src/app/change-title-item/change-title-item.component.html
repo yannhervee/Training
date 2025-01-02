@@ -1,5 +1,6 @@
 
-    <div >
+    <div class="container">
+    <div [ngStyle]="{'color': card.btnColor}">
 
         {{card.title}}
     </div>
@@ -7,3 +8,4 @@
         {{card.body}}
     </div>
     <button [ngStyle]="{'background-color': card.btnColor, 'border-color': card.btnColor}" (click)="handleClick()">Set {{card.btnColor}}</button>
+</div>

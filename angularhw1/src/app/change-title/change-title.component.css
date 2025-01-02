@@ -1,20 +1,21 @@
-.card {
-    border: 2px solid black;
-    padding: 3px;
-    width: 45%;
-}
 .container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.card button{
-    margin-top: 5px;
-    color: white;
-    padding: 3px;
-    
-    position: absolute; /* Position button relative to .card */
-    bottom: 5px; /* 5px from the bottom edge of the card */
-    left: 5px; /* 5px from the left edge of the card */
-    
-}
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: flex-start; 
+  }
+  
+  .card {
+    width: calc(30% - 20px); 
+    padding: 20px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: border-color 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
