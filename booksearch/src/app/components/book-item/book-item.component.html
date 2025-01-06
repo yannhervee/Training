@@ -1,0 +1,10 @@
+
+  <div class="book-card">
+    <img *ngIf="book.bookPic" [src]="book.bookPic" [alt]="book.bookName" />
+    <h3 class="book-title">{{ book.bookName }}</h3>
+    <p class="book-publisher" *ngIf="book.publisher">Publisher: {{ book.publisher }}</p>
+    <p class="book-date" *ngIf="book.publishDate">Published: {{ book.publishDate }}</p>
+    <p class="book-description" *ngIf="book.description">{{ book.description }}</p>
+    <button class="add-to-wishlist-button" (click)="handleaddToWish()">Add to Wishlist</button>
+  </div>
+  

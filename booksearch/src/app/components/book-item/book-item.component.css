@@ -1,0 +1,40 @@
+.book-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .book-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .book-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .book-publisher, .book-date, .book-description {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .add-to-wishlist-button {
+    background-color: #0f967b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .add-to-wishlist-button:hover {
+    background-color: #0d7a63;
+  }

@@ -1,0 +1,11 @@
+<div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="bookName"
+      placeholder="Search for books..."
+      (input)="onInputChange()"
+      class="search-input"
+    />
+    <button (click)="handleSearch()" class="search-button">Search</button>
+  </div>
+  

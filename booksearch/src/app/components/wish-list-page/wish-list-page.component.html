@@ -1,0 +1,12 @@
+
+<div class="wishlist-container">
+  
+    <section class="wishlist">
+      <h2>Your Wishlist</h2>
+      <ul class="wishlist-list" *ngFor="let book of wishBooks">
+      
+       <app-wish-list [book]="book" (deleteWishBook)="handleDeleteBook($event)"></app-wish-list>
+       
+      </ul>
+    </section>
+  </div>

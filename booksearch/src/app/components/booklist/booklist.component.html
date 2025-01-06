@@ -1,0 +1,11 @@
+
+<div class="book-grid" *ngFor="let book of books">
+    <app-book-item
+    *ngFor="let book of books"
+    [book]="book"
+    (addToWishlist)="handleAddToWishlist($event)"
+  ></app-book-item>
+   
+    
+   
+  </div>
