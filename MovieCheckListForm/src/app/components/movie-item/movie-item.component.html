@@ -1,0 +1,11 @@
+
+  <div class="movie-item">
+    <span class="bullet">&bull;</span>
+    <input
+      type="checkbox"
+      [checked]="isChecked"
+      (change)="handleCheckbox()"
+    />
+    <label>{{ movie }}</label>
+  </div>
+  

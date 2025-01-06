@@ -1,0 +1,37 @@
+<div class="container">
+<h1>Movie selection </h1>
+
+<form [formGroup]="form" class="movie-form">
+    <div>
+      <input
+        type="checkbox"
+        formControlName="selectAll"
+        (change)="handleSelectAll()"
+      />
+      <label>Select All</label>
+    </div>
+  
+    <!-- Movie Items -->
+    <div *ngFor="let movie of itemlist; let i = index">
+      <app-movie-item
+        [movie]="movie"
+        [isChecked]="moviesFormArray.at(i).value"
+        (toggleSelection)="moviesFormArray.at(i).setValue($event)"
+        (change)="handleMovieSelection()"
+      ></app-movie-item>
+    </div>
+  
+    
+    <button type="button" (click)="handleClearAll()">Clear All</button>
+  </form>
+  
+  <!-- display Movies selected -->
+  <div *ngIf="selectedMovies.length > 0">
+    <h3>Selected Movies:</h3>
+    <ul>
+      <li *ngFor="let movie of selectedMovies">{{ movie }}</li>
+    </ul>
+  </div>
+
+</div>
+  
