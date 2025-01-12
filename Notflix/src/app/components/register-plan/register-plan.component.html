@@ -1,0 +1,16 @@
+<div class="plan-container">
+    <h2>STEP 3 OF 4</h2>
+    <h1>Choose the plan that's right for you</h1>
+  
+    <app-plan-list
+      [roles]="roles"
+      (roleSelected)="onSelected($event)"
+    ></app-plan-list>
+  
+    <div class="plan-footer">
+      <button class="next-btn" [disabled]="!selectedRole"  (click)="proceedToNextStep()">
+        Next
+      </button>
+    </div>
+  </div>
+  

@@ -1,0 +1,51 @@
+.plan-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    margin-top: 10%;
+  }
+  
+  .plan-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .plan-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .plan-card .resolution {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .plan-card .details {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  .plan-card.selected {
+    border: 2px solid #e50914;
+    transform: scale(1.05);
+    background: linear-gradient(to bottom, #e50914, #c40812);
+    color: #fff;
+  }
+  
+  .plan-card.selected h3,
+  .plan-card.selected .resolution,
+  .plan-card.selected .details {
+    color: #fff;
+  }
+  

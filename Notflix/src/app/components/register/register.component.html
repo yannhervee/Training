@@ -1,0 +1,52 @@
+
+<div class="register-container">
+   
+        <h1 class="logo">
+            Notflix
+        </h1>
+        <div class="card-form">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <p>Step 1 of 3</p>
+                <h1>Create a password to start your membership</h1>
+
+                <p class="steps-detail">Just a few more steps and you're done! we hate paperwork, too.</p>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                   
+                    <input id="email" type="email" formControlName="email" class="form-input"
+                    placeholder="Email or mobile number" />
+                    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+                        Please enter a valid email.
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                   
+                    <input id="password" type="password" formControlName="password" class="form-input" placeholder="Password" />
+                    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+                        Password is required.
+                    </div>
+                    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+                        <!-- Custom Error Messages -->
+                        <div *ngIf="registerForm.get('password')?.errors?.['passwordStrength']?.hasUpperCase === false">
+                          Must contain at least one uppercase letter.
+                        </div>
+                        <div *ngIf="registerForm.get('password')?.errors?.['passwordStrength']?.hasNumber === false">
+                          Must contain at least one number.
+                        </div>
+                        <div *ngIf="registerForm.get('password')?.errors?.['passwordStrength']?.hasMinimumLength === false">
+                          Must be at least 8 characters long.
+                        </div>
+                      </div>
+                    
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" [disabled]="registerForm.invalid" (click)="onSubmit()" >Next</button>
+
+            </form>
+        </div>
+    
+</div>
