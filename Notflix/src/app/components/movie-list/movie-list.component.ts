@@ -5,10 +5,11 @@ import { MovieService } from '../../../services/movie.service';
 import { Movie } from '../../../services/interfaces/movie';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [CommonModule, MovieItemComponent, FormsModule],
+  imports: [CommonModule, MovieItemComponent, FormsModule, NavBarComponent],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css'
 })
