@@ -7,13 +7,13 @@
     color: white;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 70vh;
   }
   
   .overlay {
     
     width: 100vw;
-    height: 100vh;
+    height: 70vh;
     justify-content: center;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.6); 
