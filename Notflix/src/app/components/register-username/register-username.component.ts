@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-register-username',
  
-  imports: [CommonModule, ReactiveFormsModule, RouterLink,],
+  imports: [CommonModule, ReactiveFormsModule,],
   templateUrl: './register-username.component.html',
   styleUrl: './register-username.component.css'
 })

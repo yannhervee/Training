@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Movie } from '../../../../services/interfaces/movie';
 
@@ -12,6 +12,11 @@ import { Movie } from '../../../../services/interfaces/movie';
 export class MovieItemComponent {
 
   @Input() movie!: Movie;
+  @Output() selectedMovie = new EventEmitter<Movie>();
+
+  handleSelectedMovie(): void {
+    this.selectedMovie.emit(this.movie);
+  }
 
   
 

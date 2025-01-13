@@ -8,7 +8,7 @@ import { PlanListComponent } from './plan-list/plan-list.component';
 
 @Component({
   selector: 'app-register-plan',
-  imports: [CommonModule, RouterLink, PlanListComponent],
+  imports: [CommonModule, PlanListComponent],
   templateUrl: './register-plan.component.html',
   styleUrl: './register-plan.component.css'
 })

@@ -1,0 +1,32 @@
+.movie-details {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    color: white;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 94.2%;
+    
+    height: 90%;
+    
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+  }
+  
+  .details-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 20%;
+    gap: 20px;
+  }
+  

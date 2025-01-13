@@ -1,0 +1,15 @@
+<div class="productions">
+    <h2>Production Companies</h2>
+    <div class="production-list">
+      <div class="production-item" *ngFor="let company of productionCompanies">
+        <img
+          *ngIf="company.logo_path"
+          [src]="'https://image.tmdb.org/t/p/w200' + company.logo_path"
+          [alt]="company.name"
+          class="production-logo"
+        />
+        <p>{{ company.name }}</p>
+      </div>
+    </div>
+  </div>
+  

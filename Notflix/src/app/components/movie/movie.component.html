@@ -1,1 +1,20 @@
-<p>movie works!</p>
+<app-nav-bar></app-nav-bar>
+<!-- <div class="movie-details">
+  <app-movie-banner *ngIf="movie" [movie]="movie"></app-movie-banner>
+  <app-movie-production *ngIf="movie && movie.production_companies" [productionCompanies]="movie.production_companies"></app-movie-production>
+</div> -->
+
+<div
+  class="movie-details"
+  [style.background-image]="'url(https://image.tmdb.org/t/p/w1280' + movie?.backdrop_path + ')'"
+>
+  <div class="overlay">
+    <div class="details-container">
+      <app-movie-banner *ngIf="movie" [movie]="movie"></app-movie-banner>
+      <app-movie-production
+        *ngIf="movie && movie.production_companies"
+        [productionCompanies]="movie.production_companies"
+      ></app-movie-production>
+    </div>
+  </div>
+</div>
