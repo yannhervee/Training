@@ -1,0 +1,20 @@
+<div class="banner-content">
+    <h1>{{ movie.title }}</h1>
+    <p class="tagline"><em>{{ movie.tagline }}</em></p>
+    <p class="genres"><strong>Genres:</strong> {{ genresString }}</p>
+    <p class="overview">{{ movie.overview }}</p>
+    <p class="release-date"><strong>Release Date:</strong> {{ movie.release_date }}</p>
+    <p class="rating">
+      <strong>Rating:</strong> {{ movie.vote_average }} ({{ movie.vote_count }} votes)
+    </p>
+    <button class="btnPlay">Play Now</button>
+    <button class="btnTrailer" (click)="openModal()">Trailer</button>
+  </div>
+
+  <div class="custom-modal" *ngIf="modalOpen">
+    <div class="modal-content">
+      <button class="close-btn" (click)="closeModal()">X</button>
+      <youtube-player *ngIf="videoId" [videoId]="videoId" [width]="800" [height]="450"></youtube-player>
+    </div>
+  </div>
+  

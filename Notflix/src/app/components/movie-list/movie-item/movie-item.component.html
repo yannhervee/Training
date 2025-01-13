@@ -1,6 +1,7 @@
 <div
   class="movie-card"
   [style.background-image]="'url(https://image.tmdb.org/t/p/w500' + movie.backdrop_path + ')'"
+  (click)="handleSelectedMovie()"
 >
   <div class="card-overlay">
     <!-- Poster -->
@@ -29,7 +30,7 @@
       
 
       <!-- Button -->
-      <button class="more-details-btn">More Details</button>
+      <button class="more-details-btn" (click)="handleSelectedMovie()">More Details</button>
     </div>
   </div>
 </div>

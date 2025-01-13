@@ -1,0 +1,84 @@
+.banner-content {
+    max-width: 60%;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .tagline {
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  
+  .genres,
+  .overview,
+  .release-date,
+  .rating {
+    margin: 10px 0;
+  }
+  
+  .btnTrailer {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background-color: #1355c1;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .btnPlay{
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background-color: #e50914;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #f40612;
+  }
+  
+  .custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* Dim background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #000;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 850px;
+    max-width: 90%;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    color: #f00;
+    background-color: white;
+  }
+  

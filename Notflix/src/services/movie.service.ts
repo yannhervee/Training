@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject, Observable, tap, map } from 'rxjs';
 import { Movie } from './interfaces/movie';
+import { MovieDetail } from './interfaces/movieDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,12 @@ import { Movie } from './interfaces/movie';
 export class MovieService {
   private apiKey = 'd3a24da516a446b3ef83e91a800cddbc'; 
   private baseUrl = 'https://api.themoviedb.org/3';
+
   private moviesSubject = new BehaviorSubject<Movie[]>([]);
+  private selectedMovieSubject = new BehaviorSubject<MovieDetail | null>(null);
+  selectedMovie$ = this.selectedMovieSubject.asObservable();
+
+
   movies$ = this.moviesSubject.asObservable();
   constructor(private http: HttpClient) {}
   
@@ -25,6 +31,29 @@ export class MovieService {
       })
     );
   }
+
+  setSelectedMovie(movieId: number): void {
+    console.log("id ", movieId);
+    const url = `${this.baseUrl}/movie/${movieId}?api_key=${this.apiKey}`;
+    console.log('Fetching movie details from movie api:', url); 
+    this.http.get<MovieDetail>(url).subscribe((movie) => {
+      console.log('Fetched movie details:', movie);
+      this.selectedMovieSubject.next(movie); 
+    });  
+  }
+  
+  getSelectedMovie(): Observable<MovieDetail | null> {
+    console.log("select movie from service ", this.selectedMovie$)
+    return this.selectedMovie$;
+  }
+
+  getMovieTrailers(movieId: number): Observable<any> {
+    const url = `${this.baseUrl}/movie/${movieId}/videos?api_key=${this.apiKey}`;
+    return this.http.get<{ results: any[] }>(url).pipe(
+      map((res) => res.results.filter((video) => video.site === 'YouTube')) // Only get YouTube videos
+    );
+  }
+  
 
 
 }

@@ -2,6 +2,7 @@
     <app-movie-item
       *ngFor="let movie of movies"
       [movie]="movie"
+      (selectedMovie)="onSelectMovie($event)"
     ></app-movie-item>
   </div>
   
