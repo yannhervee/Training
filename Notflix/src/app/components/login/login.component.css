@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo{
+    color: #e50914;
+    font-weight: bolder;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 60px;
+    margin-left: 0;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+
+.login-container {
+    /* width: 100%;
+    height: 100vh;
+    background-color: #222;
+    
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
+
+  .overlay{
+    background-color: rgba(0, 0, 0, 0.4); 
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-form{
+    width: 500px;
+    height: 750px;
+    border: 4px solid #e50914;
+    background-color: rgba(0, 0, 0, 0.7);
+     margin: auto; 
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin-top: 10%; 
+    padding: 50px
+  }
+  
+  h1 {
+    text-align: center;
+    
+    font-size: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    top: 10px;
+    margin-bottom: 50px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-input {
+    width: 350px;
+    height: 64px;
+    padding: 24px 16px 8px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border: 2px solid #e50914;
+  }
+  
+  .error {
+    margin-top: 5px;
+    color: #e50914;
+    font-size: 14px;
+  }
+  
+  .submit-btn {
+    width: 350px;
+    height: 50px;
+    padding: 10px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
+  
+  .submit-btn:hover:not(:disabled) {
+    background-color: #f40612;
+  }
+
+  .forgot-password {
+    text-align: center;
+    margin-top: 15px;
+    color: #aaa;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .forgot-password:hover {
+    color: white;
+  }
+  
+  .signup-section {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 16px;
+    color: #aaa;
+  }
+  
+  .signup-link {
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .signup-link:hover {
+    text-decoration: underline;
+  }
+  

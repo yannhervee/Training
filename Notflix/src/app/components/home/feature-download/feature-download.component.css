@@ -1,0 +1,25 @@
+.feature-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-top: 3px solid rgb(72, 71, 69);
+    background-color:  rgba(0, 0, 0, 0.97); 
+    padding-left: 30%;
+    padding-right: 150px;
+  }
+  
+  .feature-text {
+    flex: 1;
+    color: white;
+    padding-right: 20px;
+    margin-left: 100px;
+  }
+  
+  .feature-image img {
+    width: 400px;
+    height: auto;
+
+    
+  }
+  

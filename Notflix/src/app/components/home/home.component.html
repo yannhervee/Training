@@ -1,0 +1,21 @@
+
+<app-nav></app-nav>
+<div class="hero" [ngStyle]="{ 'background-image': 'url(/netflixbackground.jpg)' }">
+    <div class="overlay">
+        <div class="hero-content">
+            <h1>Unlimited movies, TV shows, and more</h1>
+            <p>Starts at $6.99. Cancel anytime.</p>
+            <div class="email-form">
+                <input
+                type="email"
+                placeholder="Email address"
+                class="email-input"
+                [(ngModel)]="email"
+                />
+                <button class="cta-btn" [routerLink]="['/register']" [queryParams]="{email: email}">Get Started ></button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-feature-tv></app-feature-tv>
+<app-feature-download></app-feature-download>

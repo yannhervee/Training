@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MovieItemComponent } from '../movie-item/movie-item.component';
+import { MovieItemComponent } from './movie-item/movie-item.component';
 import { MovieService } from '../../../services/movie.service';
 import { Movie } from '../../../services/interfaces/movie';
 import { FormsModule } from '@angular/forms';

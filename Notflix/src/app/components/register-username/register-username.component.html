@@ -1,0 +1,42 @@
+
+<div class="register-container">
+   
+    <h1 class="logo">
+        Notflix
+    </h1>
+    <div class="card-form">
+        <form [formGroup]="registerUserForm" (ngSubmit)="onSubmit()">
+            <p>Step 2 of 3</p>
+            <h1>Create a Username && Add your Tmdb Api_Key</h1>
+
+            <p class="steps-detail">Just a few more steps and you're done! we hate paperwork, too.</p>
+
+            <!-- Email Field -->
+
+            <div class="form-group">
+               
+                <input id="username" type="text" formControlName="username" class="form-input"
+                placeholder="Username" />
+                <div *ngIf="registerUserForm.get('username')?.invalid && registerUserForm.get('username')?.touched" class="error">
+                    Username is required
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+               
+                <input id="apikey" type="text" formControlName="movieApiKey" class="form-input" placeholder="TMdb Api key" />
+                <div *ngIf="registerUserForm.get('movieApiKey')?.invalid && registerUserForm.get('movieApiKey')?.touched" class="error">
+                    Movie API is required.
+                </div>
+       
+                
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" [disabled]="registerUserForm.invalid" (click)="onSubmit()">Next</button>
+
+        </form>
+    </div>
+
+</div>

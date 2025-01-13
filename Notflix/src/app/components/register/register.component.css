@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo{
+    color: #e50914;
+    font-weight: bolder;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 60px;
+    margin-left: 0;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+
+.register-container {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    background-size: rgb(218, 20, 20);
+    background-position: center;
+    height: 100vh;
+  }
+
+
+  .card-form{
+    width: 700px;
+    height: 750px;
+   
+    margin: auto; 
+    
+    
+    margin-top: 15%; 
+    padding: 50px
+  }
+  
+  h1 {
+    text-align: center;
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .steps-detail{
+    font-size: 20px;
+    margin-bottom: 20px;
+    
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  
+  .form-input {
+    width: 440px;
+    height: 64px;
+    padding: 24px 16px 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border: 2px solid #e50914;
+  }
+  
+  .error {
+    margin-top: -5px;
+    color: #e50914;
+    font-size: 16px;
+  }
+  
+  .submit-btn {
+    width: 440px;
+    height: 50px;
+    padding: 10px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
+  
+  .submit-btn:hover:not(:disabled) {
+    background-color: #f40612;
+  }
+
+  

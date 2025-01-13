@@ -1,0 +1,19 @@
+
+<div class="plan-list">
+    <div
+      class="plan-card"
+      *ngFor="let role of roles"
+      [class.selected]="role.name === selectedRole"
+      (click)="selectRole(role.name)"
+    >
+      <h3>{{ role.name }}</h3>
+      <p class="resolution">{{ role.resolution }}</p>
+      <div class="details">
+        <p><strong>Monthly price:</strong> {{ role.price }}</p>
+        <p><strong>Video and sound quality:</strong> {{ role.quality }}</p>
+        <p><strong>Supported devices:</strong> {{ role.devices }}</p>
+        <p><strong>Ads:</strong> {{ role.ads }}</p>
+      </div>
+    </div>
+  </div>
+  
