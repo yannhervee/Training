@@ -15,6 +15,8 @@ import { PlanListComponent } from './plan-list/plan-list.component';
 export class RegisterPlanComponent {
   selectedRole: string ='';
 
+  constructor(private router: Router){}
+
   roles = [
     {
       name: 'Standard with ads',
@@ -50,7 +52,8 @@ export class RegisterPlanComponent {
   proceedToNextStep() {
     if (this.selectedRole) {
       console.log(`Proceeding with role: ${this.selectedRole}`);
-      // Navigate to the next step or perform other actions
+      this.router.navigate(['/movie-list']);
+      
     } else {
       alert('Please select a plan to continue!');
     }
