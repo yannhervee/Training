@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Contact us</h2>
+
+    <!-- Thank You Section -->
+    <div class="onSubmit" *ngIf="submitted && contactForm.valid">
+        <p class="thankyou">Thank you for contacting us. We will be in touch shortly!</p>
+        <hr class="line">
+        <p class="info">You have submitted the following message:</p>
+    
+        <p><strong>Name:</strong></p>
+        <p>{{ contactForm.get('name')?.value }}</p>
+    
+        <p><strong>Message:</strong></p>
+        <p>{{ contactForm.get('message')?.value }}</p>
+    
+    </div>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+        <div class="form">
+            <label for="name">Name</label>
+            <input id="name" type="text" formControlName="name" class="input-field" />
+            <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error">
+                Name is required
+            </div>
+        </div>
+
+        <div class="form">
+            <label for="message">Message</label>
+            <textarea id="message" formControlName="message" class="textarea-field" rows="4"
+                placeholder="Enter your message"></textarea>
+            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="error">
+                Message is required and should be at least 10 characters long
+            </div>
+        </div>
+
+        <button type="submit" class="submit-button">Send Message</button>
+    </form>
+</div>
