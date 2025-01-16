@@ -1,0 +1,32 @@
+.container {
+    background-color: #eb0006;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center; /* Vertically align items */
+    height: 40px;
+}
+.company {
+    font-weight: bold;
+}
+.items {
+    list-style: none;
+    display: flex;
+    margin-left: auto; /* Push items to the right */
+}
+.items li {
+    margin: 0 10px; /* Add spacing between nav items */
+}
+.items a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s; 
+}
+.items a:hover {
+    color: #ffc107; /* Highlight color on hover */
+    /* background-color: white; */
+}
+
+

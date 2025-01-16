@@ -1,0 +1,15 @@
+<div class="container">
+    <h2> CVS User </h2>
+    <div class="userlist" *ngFor="let user of users">
+        <img
+        class="pic"
+        [src]="user.picture.thumbnail"
+        alt="profile picture of employee"
+        />
+        <div class="userInfo">
+            <p class="name"> {{user.name.first}} {{user.name.last}}</p>
+            <p class="email"> <a [href]="'mailto:' + user.email">{{ user.email }}</a></p>
+            
+        </div>
+    </div>
+</div>
