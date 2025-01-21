@@ -5,6 +5,8 @@ import { passwordValidator } from '../../validators/password-validator';
 import { RouterLink, Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { PlanListComponent } from './plan-list/plan-list.component';
+import { RegistrationService } from '../../../services/registration.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-register-plan',
@@ -15,7 +17,9 @@ import { PlanListComponent } from './plan-list/plan-list.component';
 export class RegisterPlanComponent {
   selectedRole: string ='';
 
-  constructor(private router: Router){}
+  constructor(private router: Router, 
+    private registerService: RegistrationService, 
+    private authService: AuthService) {}
 
   roles = [
     {
@@ -52,7 +56,11 @@ export class RegisterPlanComponent {
   proceedToNextStep() {
     if (this.selectedRole) {
       console.log(`Proceeding with role: ${this.selectedRole}`);
-      this.router.navigate(['/movie-list']);
+      this.registerService.setUserRole(this.selectedRole);
+      
+      const { email, password, role, username } = this.registerService.getFinalData();
+
+      this.authService.register(username, email, password, this.selectedRole);  
       
     } else {
       alert('Please select a plan to continue!');

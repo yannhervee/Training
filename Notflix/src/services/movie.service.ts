@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject, Observable, tap, map } from 'rxjs';
+import { Subject, BehaviorSubject, Observable, tap, map, AsyncSubject } from 'rxjs';
 import { Movie } from './interfaces/movie';
 import { MovieDetail } from './interfaces/movieDetails';
 
@@ -13,6 +13,8 @@ export class MovieService {
 
   private moviesSubject = new BehaviorSubject<Movie[]>([]);
   private selectedMovieSubject = new BehaviorSubject<MovieDetail | null>(null);
+  private searchMoviesSubject = new BehaviorSubject<Movie[]>([]);
+  searchMovie$ = this.searchMoviesSubject.asObservable();
   selectedMovie$ = this.selectedMovieSubject.asObservable();
 
 
@@ -30,6 +32,20 @@ export class MovieService {
         this.moviesSubject.next(res);
       })
     );
+  }
+
+  searchMovies(query: string): Observable<Movie[]> {
+    const url = `${this.baseUrl}/search/movie?query=${encodeURIComponent(query)}&api_key=${this.apiKey}`;
+    console.log('Searching movies with query:', query);
+
+    return this.http.get<{ results: Movie[] }>(url).pipe(
+      map((res) => res.results),
+      tap((res) => {
+        console.log('Search Results:', res);
+        this.searchMoviesSubject.next(res);
+       
+      })
+    )
   }
 
   setSelectedMovie(movieId: number): void {
@@ -53,7 +69,11 @@ export class MovieService {
       map((res) => res.results.filter((video) => video.site === 'YouTube')) // Only get YouTube videos
     );
   }
+
+  clearData(): void {
+    this.moviesSubject.next([]);
+    this.searchMoviesSubject.next([]);
+    this.selectedMovieSubject.next(null);
+  }
   
-
-
 }

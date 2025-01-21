@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators} fro
 import { passwordValidator } from '../../validators/password-validator';
 import { RouterLink, Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { RegistrationService } from '../../../services/registration.service';
 
 @Component({
   selector: 'app-register',
@@ -14,15 +15,19 @@ import { ActivatedRoute } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router){
+  constructor(private fb: FormBuilder, 
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private registrationService: RegistrationService)
+    {
     
-    this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, passwordValidator]]
+      this.registerForm = this.fb.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, passwordValidator]]
 
-    })
+      })
 
-  }
+    }
 
   ngOnInit() {
     // Get the query parameter and set the initial value of the email field
@@ -39,7 +44,9 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void{
     
     if(this.registerForm.valid){
-      console.log("registered success ", this.registerForm.controls);
+      const { email, password } = this.registerForm.value;
+
+      this.registrationService.setEmailAndPassword(email, password)
       this.router.navigate(['/register-info']);
       
     }else{

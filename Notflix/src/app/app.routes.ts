@@ -6,6 +6,8 @@ import { RegisterUsernameComponent } from './components/register-username/regist
 import { RegisterPlanComponent } from './components/register-plan/register-plan.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieComponent } from './components/movie/movie.component';
+import { noAuthGuard } from '../guards/no-auth.guard';
+import { authGuard } from '../guards/auth.guard';
 
 export const routes: Routes = [
     // { path: '', component: HomeComponent }, // Default route (Home)
@@ -30,11 +32,13 @@ export const routes: Routes = [
         path: 'login', 
         loadComponent: () => 
           import('./components/login/login.component').then((m) => m.LoginComponent),
+        canActivate: [noAuthGuard],
       },
       { 
         path: 'register', 
         loadComponent: () => 
           import('./components/register/register.component').then((m) => m.RegisterComponent),
+        canActivate: [noAuthGuard],
       },
       { 
         path: 'register-info', 
@@ -42,6 +46,7 @@ export const routes: Routes = [
           import('./components/register-username/register-username.component').then(
             (m) => m.RegisterUsernameComponent
           ),
+          canActivate: [noAuthGuard],
       },
       { 
         path: 'register-plan', 
@@ -49,6 +54,7 @@ export const routes: Routes = [
           import('./components/register-plan/register-plan.component').then(
             (m) => m.RegisterPlanComponent
           ),
+          canActivate: [noAuthGuard],
       },
       { 
         path: 'movie-list', 
@@ -56,10 +62,12 @@ export const routes: Routes = [
           import('./components/movie-list/movie-list.component').then(
             (m) => m.MovieListComponent
           ),
+          canActivate: [authGuard],
       },
       { 
         path: 'movie-details', 
         loadComponent: () => 
           import('./components/movie/movie.component').then((m) => m.MovieComponent),
+        canActivate: [authGuard],
       },
 ];

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { RouterLink } from '@angular/router';
 export class LoginComponent {
   loginForm!: FormGroup;
   
-  constructor(private fb: FormBuilder){
+  
+  constructor(private fb: FormBuilder, private authService: AuthService){
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]], 
       password:['', [Validators.required, ]]
@@ -20,7 +22,15 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    console.log("form ", this.loginForm)
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value; 
+      console.log('Login form values:', { email, password });
+      this.authService.login(email, password); 
+    } else {
+      console.log('Invalid form submission');
+      alert('Please fill out all required fields.');
+    }
+    
   }
 
 

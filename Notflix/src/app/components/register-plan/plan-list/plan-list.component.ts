@@ -17,6 +17,15 @@ export class PlanListComponent {
 
   selectRole(role: string) {
     this.selectedRole = role;
-    this.roleSelected.emit(role); 
+
+    if(role === "Standard with ads"){
+      this.roleSelected.emit('USER'); 
+    }else if(role ==="Standard"){
+      this.roleSelected.emit('SUPERUSER'); 
+    }
+    else{
+      this.roleSelected.emit('ADMIN'); 
+    }
+    
   }
 }

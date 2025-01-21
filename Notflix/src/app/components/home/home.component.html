@@ -1,8 +1,8 @@
 
-<app-nav></app-nav>
+
 <div class="hero" [ngStyle]="{ 'background-image': 'url(/netflixbackground.jpg)' }">
     <div class="overlay">
-        <div class="hero-content">
+        <div class="hero-content" *ngIf="!isAuthenticated">
             <h1>Unlimited movies, TV shows, and more</h1>
             <p>Starts at $6.99. Cancel anytime.</p>
             <div class="email-form">
@@ -13,6 +13,20 @@
                 [(ngModel)]="email"
                 />
                 <button class="cta-btn" [routerLink]="['/register']" [queryParams]="{email: email}">Get Started ></button>
+            </div>
+        </div>
+
+        <div class="hero-content" *ngIf="isAuthenticated">
+            <h1>find movies, TV shows, and more</h1>
+            <p>The best streaming platform with all the trendings shows</p>
+            <div class="email-form">
+                <input
+                type="text"
+                placeholder="search movies or shows"
+                class="email-input"
+                [(ngModel)]="movieSearch"
+                />
+                <button class="cta-btn" (click)="getStarted()">Search Movie ></button>
             </div>
         </div>
     </div>
