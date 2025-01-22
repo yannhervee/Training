@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,12 +11,16 @@ export class RegistrationService {
   private tmdbKey: string = '';
   private username: string = '';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   setEmailAndPassword(email: string, password: string): void {
     this.email = email;
     this.password = password;
     
+  }
+
+  checkEmailExists(email: string){
+    return this.http.post<boolean>('http://localhost:5566/users/checkemail', { email })
   }
 
   setUsernameAndTmdbKey(username: string, tmdbKey: string): void {

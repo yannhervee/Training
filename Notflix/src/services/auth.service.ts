@@ -7,41 +7,52 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  
   public isAuthenticated = new BehaviorSubject<boolean>(false);
   private userNameSubject = new BehaviorSubject<string | null>(null);
 
   isAuthenticated$ = this.isAuthenticated.asObservable();
   userName$ = this.userNameSubject.asObservable();
+
   private readonly TOKEN_KEY = 'authToken';
+  private readonly USERNAME_KEY = 'username';
 
   constructor(private http: HttpClient, private router: Router) {
     const token = localStorage.getItem(this.TOKEN_KEY);
+    const username = localStorage.getItem(this.USERNAME_KEY);
+
+    
     if (token) {
       this.isAuthenticated.next(true);
+    }
+    
+    if (username) {
+      this.userNameSubject.next(username);
     }
   }
 
   login(email: string, password: string) {
     return this.http
-      .post<{ token: string; user: { username: string; role: string }  }>(
+      .post<{ token: string; user: { username: string; role: string } }>(
         'http://localhost:5566/auth/login',
-        { email: email, password }
+        { email, password }
       )
       .subscribe({
         next: (response) => {
-          // Store the access token in localStorage
           const token = response.token;
-          console.log("login response ", response)
+          console.log('Login response:', response);
+
+          // Store token and username in localStorage
           localStorage.setItem(this.TOKEN_KEY, token);
+          localStorage.setItem(this.USERNAME_KEY, response.user.username);
 
           // Update user state
           this.isAuthenticated.next(true);
           this.userNameSubject.next(response.user.username);
+
           localStorage.setItem('user_role', response.user.role);
 
           // Navigate to movies
-          this.router.navigate(['/movies']);
+          this.router.navigate(['/movie-list']);
         },
         error: () => {
           alert('Invalid credentials');
@@ -50,16 +61,20 @@ export class AuthService {
   }
 
   logout(): void {
+    // Clear localStorage and reset state
     localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.USERNAME_KEY);
+    localStorage.removeItem('user_role');
+
     this.isAuthenticated.next(false);
     this.userNameSubject.next(null);
+
     this.router.navigate(['/login']);
-    
   }
 
   register(username: string, email: string, password: string, role: string) {
     return this.http
-      .post<{ token: string; user: { username: string; role: string }}>(
+      .post<{ token: string; user: { username: string; role: string } }>(
         'http://localhost:5566/users/signup',
         { username, email, password, role }
       )
@@ -67,15 +82,18 @@ export class AuthService {
         next: (response) => {
           console.log('Response received:', response);
           const token = response.token;
+
+          // Store token and username in localStorage
           localStorage.setItem(this.TOKEN_KEY, token);
+          localStorage.setItem(this.USERNAME_KEY, response.user.username);
 
           // Update user state
           this.isAuthenticated.next(true);
-          
           this.userNameSubject.next(response.user.username);
+
           localStorage.setItem('user_role', response.user.role);
 
-          //redirecting
+          // Redirect to movie list
           this.router.navigate(['/movie-list']);
         },
         error: (error) => {
@@ -87,9 +105,9 @@ export class AuthService {
           }
         },
       });
-    }
+  }
 
-    getToken(): string | null {
-      return localStorage.getItem(this.TOKEN_KEY);
-    }
+  getToken(): string | null {
+    return localStorage.getItem(this.TOKEN_KEY);
+  }
 }

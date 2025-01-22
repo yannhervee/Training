@@ -1,9 +1,5 @@
 
 <div class="register-container">
-   
-        <h1 class="logo">
-            Notflix
-        </h1>
         <div class="card-form">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
               <p>Step 1 of 3</p>
@@ -16,10 +12,22 @@
                    
                     <input id="email" type="email" formControlName="email" class="form-input"
                     placeholder="Email or mobile number" />
-                    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
-                        Please enter a valid email.
+                    <div *ngIf="registerForm.get('email')?.touched" class="error">
+                      <!-- Invalid Email Format -->
+                      <div *ngIf="registerForm.get('email')?.hasError('required')">
+                        Email is required.
+                      </div>
+                      <div *ngIf="registerForm.get('email')?.hasError('email')">
+                        Please enter a valid email address.
+                      </div>
+                      <!-- Email Already Exists -->
+                      <div *ngIf="registerForm.get('email')?.hasError('emailExists')">
+                        This email is already registered. <a routerLink="/login" class="login-link">Login instead</a>.
+                      </div>
                     </div>
+                    
                 </div>
+                
 
                 <!-- Password Field -->
                 <div class="form-group">
