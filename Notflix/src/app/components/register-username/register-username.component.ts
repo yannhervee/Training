@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators} from '@angular
 import { RouterLink, Router } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
+import { RegistrationService } from '../../../services/registration.service';
 
 @Component({
   selector: 'app-register-username',
@@ -16,7 +17,7 @@ export class RegisterUsernameComponent {
 
   registerUserForm!: FormGroup
 
-  constructor(private fb: FormBuilder, private router: Router){
+  constructor(private fb: FormBuilder, private router: Router, private registerService: RegistrationService){
     this.registerUserForm = this.fb.group({
       username: ['', [Validators.required]],
       movieApiKey: ['', [Validators.required]]
@@ -26,6 +27,9 @@ export class RegisterUsernameComponent {
   onSubmit():void{
     console.log("success ", this.registerUserForm.controls);
     if(this.registerUserForm.valid){
+      const {username, tmdbKey} = this.registerUserForm.value;
+
+      this.registerService.setUsernameAndTmdbKey(username, tmdbKey)
       this.router.navigate(['/register-plan'])
     }else{
       console.log("what is going on")

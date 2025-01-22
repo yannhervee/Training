@@ -4,11 +4,11 @@ import { MovieService } from '../../../services/movie.service';
 import { MovieDetail } from '../../../services/interfaces/movieDetails';
 import { MovieBannerComponent } from './movie-banner/movie-banner.component';
 import { MovieProductionComponent } from './movie-production/movie-production.component';
-import { NavBarComponent } from '../nav-bar/nav-bar.component';
+
 
 @Component({
   selector: 'app-movie',
-  imports: [CommonModule, MovieBannerComponent, MovieProductionComponent, NavBarComponent],
+  imports: [CommonModule, MovieBannerComponent, MovieProductionComponent,],
   templateUrl: './movie.component.html',
   styleUrl: './movie.component.css'
 })
