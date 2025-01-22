@@ -14,8 +14,9 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './register-plan.component.html',
   styleUrl: './register-plan.component.css'
 })
-export class RegisterPlanComponent {
+export class RegisterPlanComponent implements OnInit {
   selectedRole: string ='';
+  isAuthenticated: boolean = false;
 
   constructor(private router: Router, 
     private registerService: RegistrationService, 
@@ -48,22 +49,63 @@ export class RegisterPlanComponent {
     },
   ];
 
+  ngOnInit(): void {
+    // Check if the user is authenticated
+    this.authService.isAuthenticated$.subscribe((authStatus) => {
+      this.isAuthenticated = authStatus;
+    });
+  }
+
   onSelected(role: string){
     this.selectedRole = role;
     console.log("selected role ", this.selectedRole);
   }
 
-  proceedToNextStep() {
-    if (this.selectedRole) {
-      console.log(`Proceeding with role: ${this.selectedRole}`);
-      this.registerService.setUserRole(this.selectedRole);
+  // proceedToNextStep() {
+  //   if (this.selectedRole) {
+  //     console.log(`Proceeding with role: ${this.selectedRole}`);
+  //     this.registerService.setUserRole(this.selectedRole);
       
-      const { email, password, role, username } = this.registerService.getFinalData();
+  //     const { email, password, role, username } = this.registerService.getFinalData();
 
-      this.authService.register(username, email, password, this.selectedRole);  
+  //     this.authService.register(username, email, password, this.selectedRole);  
       
-    } else {
+  //   } else {
+  //     alert('Please select a plan to continue!');
+  //   }
+  // }
+
+  proceedToNextStep(): void {
+    if (!this.selectedRole) {
       alert('Please select a plan to continue!');
+      return;
+    }
+
+    console.log(`Proceeding with role: ${this.selectedRole}`);
+
+    if (this.isAuthenticated) {
+      // User is authenticated, update their role
+      const email = localStorage.getItem('email');
+      if (!email) {
+        console.error('Email not found for authenticated user.');
+        return;
+      }
+
+      this.authService.updateRole(this.selectedRole).subscribe({
+        next: () => {
+          alert('Plan updated successfully!');
+           localStorage.setItem('user_role', this.selectedRole)
+          this.router.navigate(['/movie-list']);
+        },
+        error: () => {
+          alert('Failed to update the plan.');
+        },
+      });
+    } else {
+      // User is not authenticated, proceed with registration
+      const { email, password, username } = this.registerService.getFinalData();
+
+      this.authService.register(username, email, password, this.selectedRole);
     }
   }
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,19 @@ export class RegistrationService {
     
   }
 
-  checkEmailExists(email: string){
-    return this.http.post<boolean>('http://localhost:5566/users/checkemail', { email })
+  checkEmailExists(email: string): Observable<{ exist: boolean }> {
+    return this.http.post<{ exist: boolean }>('http://localhost:5566/users/checkemail', { email }).pipe(
+      map((res) => {
+        console.log('Email Check Response:', res); // Logs the full response object
+        return res; // Return the actual response for further processing
+      }),
+      catchError((err) => {
+        console.error('Error Checking Email:', err);
+        return of({ exist: false }); // Return a default response if an error occurs
+      })
+    );
   }
+  
 
   setUsernameAndTmdbKey(username: string, tmdbKey: string): void {
     this.username = username;

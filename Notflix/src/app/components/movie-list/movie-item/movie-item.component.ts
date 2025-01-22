@@ -18,6 +18,5 @@ export class MovieItemComponent {
     this.selectedMovie.emit(this.movie);
   }
 
-  
 
 }
