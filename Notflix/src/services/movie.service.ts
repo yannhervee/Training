@@ -101,14 +101,26 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies(): Observable<Movie[]> {
-    const url = `${this.apiUrl}/discover`;
-    console.log('Fetching movies from backend:', url);
+  // getMovies(): Observable<Movie[]> {
+  //   const url = `${this.apiUrl}/discover`;
+  //   console.log('Fetching movies from backend:', url);
+  //   return this.http.get<{ results: Movie[] }>(url).pipe(
+  //     map((res) => res.results),
+  //     tap((res) => {
+  //       console.log('Movies fetched:', res);
+  //       this.moviesSubject.next(res);
+  //     })
+  //   );
+  // }
+
+  getMovies(page: number = 1): Observable<Movie[]> {
+    const url = `${this.apiUrl}/discover?page=${page}`;
+    console.log(`Fetching movies from backend (page ${page}):`, url);
     return this.http.get<{ results: Movie[] }>(url).pipe(
       map((res) => res.results),
       tap((res) => {
         console.log('Movies fetched:', res);
-        this.moviesSubject.next(res);
+        this.moviesSubject.next([...this.moviesSubject.value, ...res]); // Append new results
       })
     );
   }
@@ -135,6 +147,13 @@ export class MovieService {
       this.selectedMovieSubject.next(movie);
     });
   }
+
+  getMoviesByPage(page: number): Observable<{ results: Movie[]; total_pages: number }> {
+    const url = `${this.apiUrl}/discover?page=${page}`;
+    console.log('Fetching movies for page:', page);
+    return this.http.get<{ results: Movie[]; total_pages: number }>(url);
+  }
+  
 
   getSelectedMovie(): Observable<MovieDetail | null> {
     console.log('Selected movie observable:', this.selectedMovie$);
