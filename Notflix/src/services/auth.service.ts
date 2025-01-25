@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +32,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post<{ token: string; user: { username: string; role: string } }>(
+      .post<{ token: string; user: { username: string; role: string, email: string } }>(
         'http://localhost:5566/auth/login',
         { email, password }
       )
@@ -44,6 +44,9 @@ export class AuthService {
           // Store token and username in localStorage
           localStorage.setItem(this.TOKEN_KEY, token);
           localStorage.setItem(this.USERNAME_KEY, response.user.username);
+          localStorage.setItem('user_role', response.user.role);
+          localStorage.setItem('email', response.user.email);
+
 
           // Update user state
           this.isAuthenticated.next(true);
@@ -65,6 +68,7 @@ export class AuthService {
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.USERNAME_KEY);
     localStorage.removeItem('user_role');
+    localStorage.removeItem('email');
 
     this.isAuthenticated.next(false);
     this.userNameSubject.next(null);
@@ -74,7 +78,7 @@ export class AuthService {
 
   register(username: string, email: string, password: string, role: string) {
     return this.http
-      .post<{ token: string; user: { username: string; role: string } }>(
+      .post<{ token: string; user: { username: string; role: string; email: string } }>(
         'http://localhost:5566/users/signup',
         { username, email, password, role }
       )
@@ -86,6 +90,9 @@ export class AuthService {
           // Store token and username in localStorage
           localStorage.setItem(this.TOKEN_KEY, token);
           localStorage.setItem(this.USERNAME_KEY, response.user.username);
+          localStorage.setItem('user_role', response.user.role);
+          localStorage.setItem('email', response.user.email);
+
 
           // Update user state
           this.isAuthenticated.next(true);
@@ -105,6 +112,15 @@ export class AuthService {
           }
         },
       });
+  }
+  
+  updateRole(role: string): Observable<void> {
+    const email = localStorage.getItem('email');
+    if (!email) {
+      throw new Error('Email not found in localStorage');
+    }
+  
+    return this.http.post<void>('http://localhost:5566/users/update-role', { email, role });
   }
 
   getToken(): string | null {

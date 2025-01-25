@@ -44,9 +44,31 @@ ngOnInit(): void {
     })
   }
 
-  onSelectMovie(movie: Movie): void{
-    this.movieService.setSelectedMovie(movie.id);
-    console.log("selected movie ", movie)
-    this.router.navigate(['/movie-details'])
+  // onSelectMovie(movie: Movie): void{
+  //   this.movieService.setSelectedMovie(movie.id);
+  //   console.log("selected movie ", movie)
+  //   const userRole = localStorage.getItem('user_role'); 
+  //   if(userRole === "USER"){
+  //     this.router.navigate(['register-plan'])
+  //   }
+  //   else{
+  //   this.router.navigate(['/movie-details', movie.id])
+  //   }
+  // }
+
+  onSelectMovie(movie: Movie): void {
+    
+    console.log("Selected movie:", movie);
+  
+    const userRole = localStorage.getItem('user_role');
+  
+    if (userRole === "USER") {
+      console.log("User role detected: Redirecting to register-plan.");
+      this.router.navigate(['/register-plan']);
+    } else {
+      console.log("Authorized user: Navigating to movie details.");
+      this.movieService.setSelectedMovie(movie.id);
+      this.router.navigate(['/movie-details', movie.id]);
+    }
   }
 }

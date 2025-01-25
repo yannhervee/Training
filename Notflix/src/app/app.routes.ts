@@ -8,6 +8,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { MovieComponent } from './components/movie/movie.component';
 import { noAuthGuard } from '../guards/no-auth.guard';
 import { authGuard } from '../guards/auth.guard';
+import { roleGuard } from '../guards/role.guard';
 
 export const routes: Routes = [
     // { path: '', component: HomeComponent }, // Default route (Home)
@@ -54,7 +55,7 @@ export const routes: Routes = [
           import('./components/register-plan/register-plan.component').then(
             (m) => m.RegisterPlanComponent
           ),
-          canActivate: [noAuthGuard],
+          // canActivate: [noAuthGuard],
       },
       { 
         path: 'movie-list', 
@@ -65,9 +66,9 @@ export const routes: Routes = [
           canActivate: [authGuard],
       },
       { 
-        path: 'movie-details', 
+        path: 'movie-details/:id', 
         loadComponent: () => 
           import('./components/movie/movie.component').then((m) => m.MovieComponent),
-        canActivate: [authGuard],
+        canActivate: [authGuard, roleGuard],
       },
 ];
