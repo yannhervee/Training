@@ -7,4 +7,10 @@
     background-color: #121212;
     padding-top: 125px;
   }
+  .loading-spinner {
+    text-align: center;
+    margin: 16px 0;
+    font-size: 18px;
+    color: #555;
+  }
   
