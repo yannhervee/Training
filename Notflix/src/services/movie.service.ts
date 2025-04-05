@@ -89,7 +89,7 @@ import { MovieDetail } from './interfaces/movieDetails';
   providedIn: 'root',
 })
 export class MovieService {
-  private apiUrl = 'http://localhost:5566/api/movies'; // Backend API URL
+  private apiUrl = 'https://notflix-backend-61352131198.us-central1.run.app/api/movies'; // Backend API URL
 
   private moviesSubject = new BehaviorSubject<Movie[]>([]);
   private selectedMovieSubject = new BehaviorSubject<MovieDetail | null>(null);

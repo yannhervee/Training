@@ -33,7 +33,7 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<{ token: string; user: { username: string; role: string, email: string } }>(
-        'http://localhost:5566/auth/login',
+        'https://notflix-backend-61352131198.us-central1.run.app/auth/login',
         { email, password }
       )
       .subscribe({
@@ -79,7 +79,7 @@ export class AuthService {
   register(username: string, email: string, password: string, role: string) {
     return this.http
       .post<{ token: string; user: { username: string; role: string; email: string } }>(
-        'http://localhost:5566/users/signup',
+        'https://notflix-backend-61352131198.us-central1.run.app/users/signup',
         { username, email, password, role }
       )
       .subscribe({
@@ -120,7 +120,7 @@ export class AuthService {
       throw new Error('Email not found in localStorage');
     }
   
-    return this.http.post<void>('http://localhost:5566/users/update-role', { email, role });
+    return this.http.post<void>('https://notflix-backend-61352131198.us-central1.run.app/users/update-role', { email, role });
   }
 
   getToken(): string | null {

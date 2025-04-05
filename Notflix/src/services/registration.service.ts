@@ -19,9 +19,10 @@ export class RegistrationService {
     this.password = password;
     
   }
+  
 
   checkEmailExists(email: string): Observable<{ exist: boolean }> {
-    return this.http.post<{ exist: boolean }>('http://localhost:5566/users/checkemail', { email }).pipe(
+    return this.http.post<{ exist: boolean }>('https://notflix-backend-61352131198.us-central1.run.app/users/checkemail', { email }).pipe(
       map((res) => {
         console.log('Email Check Response:', res); // Logs the full response object
         return res; // Return the actual response for further processing
