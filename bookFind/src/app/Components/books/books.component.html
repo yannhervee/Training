@@ -1,0 +1,9 @@
+
+<h2>Wishlist Books</h2>
+@for(book of books(); track $index){
+<div class="book-card">
+  <h3>{{ book.title }}</h3>
+  <p>Author: {{ book.publisher }}</p>
+  <p>{{ book.description }}</p>
+</div>
+}

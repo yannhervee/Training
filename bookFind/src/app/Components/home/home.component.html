@@ -1,0 +1,46 @@
+<div class="container">
+   
+
+    <div class="page">
+       
+      <div class="left-section">
+        <input
+          type="search"
+          [(ngModel)]="searchInput"
+          (ngModelChange)="search($event)"
+          placeholder="Search..."
+          class="search-box"
+        />
+  
+        <div class="result">
+          @for (book of books; track $index) {
+            <div class="book-card" (click)="selectBook(book)">
+              <img [src]="book.imageLinks.thumbnail" alt="Book cover" />
+              <div class="book-info">
+                <h3>{{ book.title }}</h3>
+                @if (book.publishedDate) {
+                  <p>{{ book.publishedDate }}</p>
+                }
+                <p>Author: {{ book.publisher }}</p>
+                <p>{{ book.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+  
+      
+      <div class="right-section">
+        <h3>Selected Books</h3>
+        @for(book of selectedBooks; track $index){
+            <div class="selected-book">
+                <span>{{ book.title }}</span>
+                <button class="remove-btn" (click)="removeBook($index)">❌</button>
+              </div>
+        }
+        
+      </div>
+    </div>
+  </div>
+  
+  
