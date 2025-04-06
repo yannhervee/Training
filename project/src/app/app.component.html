@@ -1,0 +1,13 @@
+<div>
+  <h1>{{counter()}}</h1>
+  <button (click)="increment()">+</button>
+  <button (click)="decrement()">-</button>
+</div>
+
+<p>{{computatedNumber()}}</p>
+
+@if (list().length){
+  @for(item of list(); track $index){
+    <app-item [name]="item" (val)="printEmit($event)"></app-item>
+  }
+}

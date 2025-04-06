@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Auto Complete</h1>
+    <div>
+        <input
+        type="text"
+        class="search-box"
+        placeholder="search"
+        [(ngModel)]="searchInput"
+        (input)="filter()"
+        />
+        <ul *ngIf="filterOptions.length > 0" class="suggestions">
+            <li *ngFor="let city of filterOptions" (click)="selectCity(city)">
+              {{ city }}
+            </li>
+          </ul>
+          
+    </div>
+
+    <div class="display">
+        <h3> Selected Option</h3>
+        <p> {{selectedCity}}</p>
+        
+    </div>
+</div>
+

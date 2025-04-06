@@ -1,0 +1,20 @@
+<!-- <h1>
+    Pokemons: Grass, Fire and Water
+    </h1>
+    <div>
+    <div *ngFor="let p of pokemons" class="pokemon" [ngClass]="p.type">
+      <img [src]="p.image" [alt]="p.name" />
+      <h3>{{ p.name | titlecase }}</h3>
+    </div>
+    </div> -->
+@for (item of pokemons(); track $index) {
+<div>
+  <img [src]="item['sprites'].front_default" alt="" />
+  name: {{ item.name }} types:
+  <ul>
+    @for (t of item['types']; track $index) {
+    <li>{{ t.type.name }}</li>
+    }
+  </ul>
+</div>
+}
