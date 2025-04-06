@@ -1,0 +1,8 @@
+.titleColor{
+    margin-left: auto;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

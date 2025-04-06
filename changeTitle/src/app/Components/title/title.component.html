@@ -1,0 +1,6 @@
+<h1 class="titleColor" [style.color]="titleColor">Complete Guide for Angular: Beginner</h1>
+<div class="container">
+@for(title of concepts; track $index){
+    <app-title-card [item]="title" (color)="changeColor($event)"></app-title-card>
+}
+</div>

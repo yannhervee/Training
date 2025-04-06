@@ -1,0 +1,16 @@
+.button{
+    font-weight: bold;
+    color: white;
+    height: 30px;
+    width: 100px;
+    border-radius: 7px;
+    font-size: medium;
+    border: none;
+}
+.container{
+    margin-left: 10px;
+    margin-right: auto;
+    display: block;
+    width: auto;
+   
+}

@@ -1,0 +1,10 @@
+
+
+<div class="container" [style.border]="'2px solid ' + item.color">
+    <h3 class="title">
+        {{item.title}}
+    </h3>
+    <p class="text">{{item.body}}</p>
+    <button class="button" [style.backgroundColor]="item.color" (click)="changeTitle()">set {{item.color}}</button>
+</div>
+
